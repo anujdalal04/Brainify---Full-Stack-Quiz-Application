@@ -1,0 +1,190 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Light mode (clean white + soft blue accents) */
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a; /* slate-900 */
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+
+  --primary: #3b82f6; /* blue-500 */
+  --primary-foreground: #ffffff;
+
+  --secondary: #eef2ff; /* indigo-50 */
+  --secondary-foreground: #0f172a;
+
+  --muted: #f1f5f9; /* slate-100 */
+  --muted-foreground: #475569; /* slate-600 */
+
+  --accent: #6366f1; /* indigo-500 */
+  --accent-foreground: #ffffff;
+
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+
+  --border: #e2e8f0; /* slate-200 */
+  --input: #e2e8f0;
+  --ring: #93c5fd; /* blue-300 */
+
+  --chart-1: #3b82f6;
+  --chart-2: #6366f1;
+  --chart-3: #22d3ee;
+  --chart-4: #f59e0b;
+  --chart-5: #10b981;
+
+  --radius: 0.75rem;
+
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0f172a;
+  --sidebar-primary: #3b82f6;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f1f5f9;
+  --sidebar-accent-foreground: #0f172a;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #93c5fd;
+}
+
+/* Dark mode (deep slate + blue glow highlights) */
+.dark {
+  --background: #0f172a; /* slate-900 */
+  --foreground: #e2e8f0; /* slate-200 */
+  --card: #0b1221;
+  --card-foreground: #e2e8f0;
+  --popover: #0b1221;
+  --popover-foreground: #e2e8f0;
+
+  --primary: #3b82f6; /* blue-500 */
+  --primary-foreground: #0b1221;
+
+  --secondary: #111827; /* gray-900 */
+  --secondary-foreground: #e2e8f0;
+
+  --muted: #111827;
+  --muted-foreground: #94a3b8; /* slate-400 */
+
+  --accent: #6366f1; /* indigo-500 */
+  --accent-foreground: #0b1221;
+
+  --destructive: #ef4444;
+  --destructive-foreground: #0b1221;
+
+  --border: #1f2937; /* gray-800 */
+  --input: #1f2937;
+  --ring: #60a5fa; /* blue-400 */
+
+  --chart-1: #60a5fa;
+  --chart-2: #818cf8;
+  --chart-3: #22d3ee;
+  --chart-4: #f59e0b;
+  --chart-5: #34d399;
+
+  --sidebar: #0b1221;
+  --sidebar-foreground: #e2e8f0;
+  --sidebar-primary: #60a5fa;
+  --sidebar-primary-foreground: #0b1221;
+  --sidebar-accent: #111827;
+  --sidebar-accent-foreground: #e2e8f0;
+  --sidebar-border: #1f2937;
+  --sidebar-ring: #60a5fa;
+}
+
+@theme inline {
+  --font-sans: var(--font-poppins);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* Utilities for gradients and depth */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 8px color-mix(in oklch, var(--color-primary) 25%, transparent));
+}
+
+.btn-gradient {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: var(--color-primary-foreground);
+}
+
+.soft-card {
+  border-radius: var(--radius-xl);
+  box-shadow: 0 10px 30px 0 color-mix(in oklch, var(--color-primary) 10%, transparent);
+}
+
+/* Motion helpers */
+.reveal-up {
+  animation: reveal-up 0.6s ease-out both;
+}
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Subtle glow utility for emphasized CTAs like Login and Save Quiz */
+.btn-glow {
+  box-shadow: 0 0 0 1px color-mix(in oklch, var(--color-accent) 30%, transparent), 0 8px 20px -8px
+    color-mix(in oklch, var(--color-primary) 35%, transparent);
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+.btn-glow:hover {
+  box-shadow: 0 0 0 2px color-mix(in oklch, var(--color-accent) 40%, transparent), 0 10px 28px -8px
+    color-mix(in oklch, var(--color-primary) 45%, transparent);
+  transform: translateY(-1px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
